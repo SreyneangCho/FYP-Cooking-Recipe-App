@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,8 +40,6 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.activity_home, null);
-
-        //return inflater.inflate(R.layout.activity_home, container, false);
     }
 
     @Override
@@ -188,19 +187,16 @@ public class HomeFragment extends Fragment {
                                     ingredient_list_array.add(ingredient_name);
                                 }
                                 ingredient_all_list_array.add(ingredient_name);
-
                             }
-
                         }
 
-                        Set<String> st = new HashSet<>(ingredient_list_array);
-                        Set<String> st1 = new HashSet<>(ingredient_all_list_array);
+                        Set<String> st_user_ingredient = new HashSet<>(ingredient_list_array);
+                        Set<String> st_all_ingredient = new HashSet<>(ingredient_all_list_array);
 
-                        for (String s : st)
-                            ingredient_list.put(s, Collections.frequency(ingredient_list_array, s));
-                        for (String s1 : st1)
-                            ingredient_all_list.put(s1, Collections.frequency(ingredient_all_list_array, s1));
-
+                        for (String s_user : st_user_ingredient)
+                            ingredient_list.put(s_user, Collections.frequency(ingredient_list_array, s_user));
+                        for (String s_all : st_all_ingredient)
+                            ingredient_all_list.put(s_all, Collections.frequency(ingredient_all_list_array, s_all));
 
                         for(Map.Entry<String, Integer> entry : ingredient_all_list.entrySet()){
                             String ingredient_name = entry.getKey();
@@ -223,13 +219,13 @@ public class HomeFragment extends Fragment {
                             }
                             ingredient_idf_user.put(ingredient_name, idf);
                         }
-                        //Toast.makeText(getContext(), String.valueOf(ingredient_idf_user), Toast.LENGTH_LONG).show();
+
                         HashMap<String, Double> ingredient_recipe = new HashMap<>();
                         for (DataSnapshot child : dataSnapshot.getChildren()) {
                             String key = child.getKey();
                             double total = 0;
-                            double a = 0;
-                            double b = 0;
+                            double sum_ingredient_recipe = 0;
+                            double sum_ingredient_user = 0;
                             ArrayList<String> recipe_ing_list = new ArrayList<>();
                             for (DataSnapshot ingredient : child.child("ingredient").getChildren()) {
                                 String ingredient_name = ingredient.child("ingredient_name").getValue(String.class);
@@ -254,39 +250,23 @@ public class HomeFragment extends Fragment {
                                 double temp1 = Math.pow(ingredient_tf_idf, 2);
                                 double temp2 = Math.pow(ingredient_tf_idf_user, 2);
                                 total += temp;
-                                a += temp1;
-                                b += temp2;
+                                sum_ingredient_recipe += temp1;
+                                sum_ingredient_user += temp2;
                             }
 
-                            double recipe_score = total/(Math.sqrt(a)*Math.sqrt(b));
+                            double recipe_score = total/(Math.sqrt(sum_ingredient_recipe)*Math.sqrt(sum_ingredient_user));
                             ingredient_recipe.put(key, recipe_score);
-                            //Toast.makeText(getContext(), String.valueOf(recipe_score), Toast.LENGTH_LONG).show();
-                        }
-                        /*double lowest_score = 0;
-                        String recipe_code = "";
-                        for(Map.Entry<String, Double> entry : ingredient_recipe.entrySet()){
-                            double score = entry.getValue();
-                            lowest_score = score;
-                            if(!recipeID.contains(entry.getKey())){
-                                if(score>lowest_score){
-                                    lowest_score = score;
-                                    recipe_code = entry.getKey();
-                                }
-                            }
 
-                        }*/
+                        }
 
                         ArrayList<String> recipe_recommend = new ArrayList<>();
 
                         Map.Entry<String, Double> max = null;
                         for (Map.Entry<String, Double> entry : ingredient_recipe.entrySet()) {
-                            //if(!recipeID.contains(entry.getKey())){
                             if (max == null || max.getValue() < entry.getValue()) {
                                 if(!recipeID.contains(entry.getKey())){
                                     max = entry;
                                 }
-
-                                //  }
                             }
                         }
                         assert max != null;
@@ -295,13 +275,10 @@ public class HomeFragment extends Fragment {
 
                         Map.Entry<String, Double> max2 = null;
                         for (Map.Entry<String, Double> entry : ingredient_recipe.entrySet()) {
-                            //if(!recipeID.contains(entry.getKey())){
                             if (max2 == null || max2.getValue() < entry.getValue()) {
                                 if(!recipeID.contains(entry.getKey()) && !recipe_code.equals(entry.getKey())){
                                     max2 = entry;
                                 }
-
-                                //  }
                             }
                         }
                         assert max2 != null;
@@ -310,13 +287,10 @@ public class HomeFragment extends Fragment {
 
                         Map.Entry<String, Double> max3 = null;
                         for (Map.Entry<String, Double> entry : ingredient_recipe.entrySet()) {
-                            //if(!recipeID.contains(entry.getKey())){
                             if (max3 == null || max3.getValue() < entry.getValue()) {
                                 if(!recipeID.contains(entry.getKey()) && !recipe_code.equals(entry.getKey()) && !recipe_code2.equals(entry.getKey())){
                                     max3 = entry;
                                 }
-
-                                //  }
                             }
                         }
                         assert max3 != null;
@@ -325,24 +299,15 @@ public class HomeFragment extends Fragment {
 
                         Map.Entry<String, Double> max4 = null;
                         for (Map.Entry<String, Double> entry : ingredient_recipe.entrySet()) {
-                            //if(!recipeID.contains(entry.getKey())){
                             if (max4 == null || max4.getValue() < entry.getValue()) {
                                 if(!recipeID.contains(entry.getKey()) && !recipe_code.equals(entry.getKey()) && !recipe_code2.equals(entry.getKey()) &&!recipe_code3.equals(entry.getKey())){
                                     max4 = entry;
                                 }
-
-                                //  }
                             }
                         }
                         assert max4 != null;
                         String recipe_code4 = max4.getKey();
                         recipe_recommend.add(recipe_code4);
-
-                        //Toast.makeText(getContext(), max.getKey(), Toast.LENGTH_LONG).show();
-                       // List<String> keys = ingredient_recipe.entrySet().stream().sorted(Map.Entry.<String, Double>comparingByValue().reversed()).limit(3).map(Map.Entry::getKey).collect(Collectors.toList());
-                        //Stream<Map.Entry<String,Double>> sorted = ingredient_recipe.entrySet().stream().sorted(Map.Entry.comparingByValue());
-                        //Stream<Map.Entry<String,Double>> sorted = ingredient_recipe.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue())).limit(4);
-                        // List<String> keys = sorted.collect(Collections)
 
                         ArrayList<RecipeDataList> list = new ArrayList();
                         for (DataSnapshot child : dataSnapshot.getChildren()) {
