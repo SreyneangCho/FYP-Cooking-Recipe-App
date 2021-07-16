@@ -10,7 +10,3 @@ Cooking recipe is a set of instructions telling you how to prepare and cook food
     - layout: contains all XML files 
   + AndroidManifest.xml
 
-## Installation
-### Android Studio
-  + import the project
-
