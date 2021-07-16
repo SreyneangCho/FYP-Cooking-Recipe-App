@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="kh.com.cookingrecipe.cookingrecipeapp">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".InstructionEditActivity" />
+        <activity android:name=".IngredientEditActivity" />
+        <activity
+            android:name=".ForgetPasswordEmailSentActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyRecipeStudentFragment"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".MyRecipeInstructionListAdapter"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".MyRecipeIngredientListAdapter"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".RecentSearchListAdapter"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".SearchbyNameResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchIngredientResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchbyNameActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SearchbyIngredient"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HomeNoLoginFragment"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".MyAccountNoLoginFragment"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".MyRecipeNoLoginFragment"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".FavoriteNoLoginFragment"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddIngredientActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".RecipeDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".IngredientFragment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ChangeUsernameActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".RecipeIngredientListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".RecipeInstructionListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".MyAccountFragment"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".MyRecipeFragment"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".AddInstructionActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".AddNewReviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UserReviewMainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UserReviewDataList"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".UserReviewListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".HomeListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".FavoriteFragment"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".HomeFragment"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".MainNavigationActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".SignUpAsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".FavoriteListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".MyRecipeListAdapter"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".RecipeDataList"
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable,LockedOrientationActivity" />
+        <activity
+            android:name=".AddRecipeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            tools:ignore="LockedOrientationActivity">
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchActivity" />
+        </activity>
+    </application>
+
+</manifest>
