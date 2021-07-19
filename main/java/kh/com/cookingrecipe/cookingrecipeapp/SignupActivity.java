@@ -1,6 +1,9 @@
 package kh.com.cookingrecipe.cookingrecipeapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +18,13 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -34,11 +42,11 @@ public class SignupActivity extends AppCompatActivity {
         Intent intent = getIntent();
         user_role = intent.getStringExtra("user_role");
 
-        name = (EditText)findViewById(R.id.etxt_signup_username);
-        email = (EditText)findViewById(R.id.etxt_signup_email);
-        password = (EditText)findViewById(R.id.etxt_signup_password);
+        name = findViewById(R.id.etxt_signup_username);
+        email = findViewById(R.id.etxt_signup_email);
+        password = findViewById(R.id.etxt_signup_password);
 
-       final CheckBox show_password = (CheckBox)findViewById(R.id.checkbox_show_password_signup);
+       final CheckBox show_password = findViewById(R.id.checkbox_show_password_signup);
 
         show_password.setOnClickListener(v -> {
             if(show_password.isChecked()){
@@ -48,8 +56,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        auth = FirebaseAuth.getInstance();
-        Button btn_signup = (Button) findViewById(R.id.btn_signup_signup);
+        Button btn_signup = findViewById(R.id.btn_signup_signup);
         btn_signup.setOnClickListener(v -> {
             str_name = name.getText().toString();
             str_password = password.getText().toString();
@@ -71,23 +78,47 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                 return;
             }
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference mRef = database.getReference().child("UserInfo");
+            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot userSnapshot) {
+                    ArrayList<String> username_list = new ArrayList<>();
+                    String username_lowercase = str_name.toLowerCase();
+                    for(DataSnapshot child : userSnapshot.getChildren()){
+                        String username = child.child("userName").getValue(String.class);
+                        username_list.add(username);
+                    }
+                    if(username_list.contains(username_lowercase)){
+                        Toast.makeText(SignupActivity.this, "This username already exists.",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        DatabaseReference mRef1 =  database.getReference().child("UserInfo");
+                        auth = FirebaseAuth.getInstance();
+                        auth.createUserWithEmailAndPassword(str_email, str_password)
+                                .addOnCompleteListener(SignupActivity.this, task -> {
+                                    if (!task.isSuccessful()) {
+                                        Toast.makeText(SignupActivity.this, "This email address is already in use by another user. ",
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
+                                        assert user != null;
+                                        String userId = user.getUid();
+                                        mRef1.child(userId).setValue(userProfile);
+                                        sendVerificationEmail();
 
-            FirebaseDatabase database =  FirebaseDatabase.getInstance();
-            DatabaseReference mRef =  database.getReference().child("UserInfo");
-            auth.createUserWithEmailAndPassword(str_email, str_password)
-                    .addOnCompleteListener(SignupActivity.this, task -> {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(SignupActivity.this, "This email address is already in use by another user. ",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
-                            assert user != null;
-                            String userId = user.getUid();
-                            mRef.child(userId).setValue(userProfile);
-                            sendVerificationEmail();
+                                    }
+                                });
+                    }
 
-                        }
-                    });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    throw databaseError.toException();
+                }
+
+            });
 
 
         });

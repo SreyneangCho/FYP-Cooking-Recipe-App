@@ -16,9 +16,9 @@ public class AddIngredientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ingredient);
 
-        final EditText etxt_name =(EditText)findViewById(R.id.etxt_ingredient_name);
-        final EditText etxt_quantity =(EditText)findViewById(R.id.etxt_ingredient_quantity);
-        Button button_add =(Button)findViewById(R.id.btn_add_ingredient);
+        final EditText etxt_name = findViewById(R.id.etxt_ingredient_name);
+        final EditText etxt_quantity = findViewById(R.id.etxt_ingredient_quantity);
+        Button button_add = findViewById(R.id.btn_add_ingredient);
         button_add.setOnClickListener(v -> {
             String name = etxt_name.getText().toString();
             String quantity = etxt_quantity.getText().toString();
@@ -37,7 +37,7 @@ public class AddIngredientActivity extends AppCompatActivity {
             }
         });
 
-        ImageView imgCancel = (ImageView) findViewById(R.id.cancel_ingredient);
+        ImageView imgCancel = findViewById(R.id.cancel_ingredient);
         imgCancel.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("Status", "Cancel New Ingredient");

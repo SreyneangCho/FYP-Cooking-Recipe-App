@@ -37,10 +37,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
        }else{
-            UsernameEt = (EditText)findViewById(R.id.etxt_login_username);
-            PasswordEt = (EditText)findViewById(R.id.etxt_login_password);
+            UsernameEt = findViewById(R.id.etxt_login_username);
+            PasswordEt = findViewById(R.id.etxt_login_password);
 
-            final CheckBox show_password = (CheckBox)findViewById(R.id.checkbox_show_password);
+            final CheckBox show_password = findViewById(R.id.checkbox_show_password);
 
             show_password.setOnClickListener(v -> {
                 if(show_password.isChecked()){
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-            Button btn_login = (Button) findViewById(R.id.btn_login_login);
+            Button btn_login = findViewById(R.id.btn_login_login);
             btn_login.setOnClickListener(v -> {
                 String email = UsernameEt.getText().toString();
                 final String password = PasswordEt.getText().toString();

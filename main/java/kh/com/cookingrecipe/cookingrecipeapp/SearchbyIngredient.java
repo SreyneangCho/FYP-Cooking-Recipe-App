@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,14 +17,14 @@ public class SearchbyIngredient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_ingredient);
 
-        ImageView img_back = (ImageView) findViewById(R.id.back_from_search_by_ingredient);
+        ImageView img_back = findViewById(R.id.back_from_search_by_ingredient);
         img_back.setOnClickListener(v -> finish());
 
-        final EditText etxt_ingredient1 = (EditText)findViewById(R.id.etxt_first_ingredient);
-        final EditText etxt_ingredient2 = (EditText)findViewById(R.id.etxt_second_ingredient);
-        final EditText etxt_ingredient3 = (EditText)findViewById(R.id.etxt_third_ingredient);
+        final EditText etxt_ingredient1 = findViewById(R.id.etxt_first_ingredient);
+        final EditText etxt_ingredient2 = findViewById(R.id.etxt_second_ingredient);
+        final EditText etxt_ingredient3 = findViewById(R.id.etxt_third_ingredient);
 
-        Button mButton = (Button) findViewById(R.id.btn_find_recipe_by_ingredient);
+        Button mButton = findViewById(R.id.btn_find_recipe_by_ingredient);
         mButton.setOnClickListener(v -> {
             final String ingredient1 = etxt_ingredient1.getText().toString();
             final String ingredient2 = etxt_ingredient2.getText().toString();

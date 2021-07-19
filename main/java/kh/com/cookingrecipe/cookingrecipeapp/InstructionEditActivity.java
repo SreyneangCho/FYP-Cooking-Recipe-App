@@ -21,13 +21,13 @@ public class InstructionEditActivity extends AppCompatActivity {
         String step_name = getIntent.getStringExtra("step");
         String position = getIntent.getStringExtra("position");
 
-        final EditText etxt_step =(EditText)findViewById(R.id.edit_instruction_step);
-        final EditText etxt_detail =(EditText)findViewById(R.id.edit_instruction_detail);
+        final EditText etxt_step = findViewById(R.id.edit_instruction_step);
+        final EditText etxt_detail = findViewById(R.id.edit_instruction_detail);
 
         etxt_step.setText(step_name);
         etxt_detail.setText(instruction);
 
-        Button button_add =(Button)findViewById(R.id.btn_edit_instruction);
+        Button button_add = findViewById(R.id.btn_edit_instruction);
         button_add.setOnClickListener(v -> {
             String step = etxt_step.getText().toString();
             String detail = etxt_detail.getText().toString();
@@ -46,7 +46,7 @@ public class InstructionEditActivity extends AppCompatActivity {
                 finish();
             }
         });
-        ImageView imgCancel = (ImageView) findViewById(R.id.cancel_instruction_edit);
+        ImageView imgCancel = findViewById(R.id.cancel_instruction_edit);
         imgCancel.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("Status", "Cancel Edit Instruction");

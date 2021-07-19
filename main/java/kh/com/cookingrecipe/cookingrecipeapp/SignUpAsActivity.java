@@ -14,7 +14,7 @@ public class SignUpAsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_as);
 
-        TextView txt_role_chef = (TextView) findViewById(R.id.txt_signupas_chef);
+        TextView txt_role_chef = findViewById(R.id.txt_signupas_chef);
 
         txt_role_chef.setOnClickListener(v -> {
             Intent intent = new Intent(SignUpAsActivity.this, SignupActivity.class);
@@ -22,7 +22,7 @@ public class SignUpAsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        TextView txt_role_student = (TextView) findViewById(R.id.txt_signupas_student);
+        TextView txt_role_student = findViewById(R.id.txt_signupas_student);
 
         txt_role_student.setOnClickListener(v -> {
             Intent intent = new Intent(SignUpAsActivity.this, SignupActivity.class);

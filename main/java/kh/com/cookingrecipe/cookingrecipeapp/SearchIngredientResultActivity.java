@@ -35,7 +35,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
         final String ingredient2 = intent.getStringExtra("ingredient2");
         final String ingredient3 = intent.getStringExtra("ingredient3");
 
-        ImageView img_back = (ImageView) findViewById(R.id.back_from_search_by_ingredient_result);
+        ImageView img_back = findViewById(R.id.back_from_search_by_ingredient_result);
         img_back.setOnClickListener(v -> finish());
         FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -70,7 +70,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                                         String name = userSnapshot.child("userName").getValue(String.class);
                                         list.add(new RecipeDataList(recipe_id, recipe_name, image, cooking_time, serving, rating, name));
-                                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_searches_ingredient);
+                                        RecyclerView recyclerView = findViewById(R.id.recylerView_searches_ingredient);
                                         HomeListAdapter adapter = new HomeListAdapter( list);
                                         recyclerView.setHasFixedSize(true);
                                         LinearLayoutManager layoutManager = new LinearLayoutManager(SearchIngredientResultActivity.this);
@@ -79,7 +79,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                         recyclerView.setLayoutManager(layoutManager);
                                         recyclerView.setAdapter(adapter);
 
-                                        emptyView = (TextView) findViewById(R.id.search_by_ingredient_no_result);
+                                        emptyView = findViewById(R.id.search_by_ingredient_no_result);
                                         if (list.isEmpty()) {
                                             recyclerView.setVisibility(View.GONE);
                                             emptyView.setVisibility(View.VISIBLE);
@@ -120,7 +120,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                                         String name = userSnapshot.child("userName").getValue(String.class);
                                         list.add(new RecipeDataList(recipe_id, recipe_name, image, cooking_time, serving, rating, name));
-                                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_searches_ingredient);
+                                        RecyclerView recyclerView = findViewById(R.id.recylerView_searches_ingredient);
                                         HomeListAdapter adapter = new HomeListAdapter(list);
                                         recyclerView.setHasFixedSize(true);
                                         LinearLayoutManager layoutManager = new LinearLayoutManager(SearchIngredientResultActivity.this);
@@ -129,7 +129,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                         recyclerView.setLayoutManager(layoutManager);
                                         recyclerView.setAdapter(adapter);
 
-                                        emptyView = (TextView) findViewById(R.id.search_by_ingredient_no_result);
+                                        emptyView = findViewById(R.id.search_by_ingredient_no_result);
                                         if (list.isEmpty()) {
                                             recyclerView.setVisibility(View.GONE);
                                             emptyView.setVisibility(View.VISIBLE);
@@ -166,7 +166,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                                         String name = userSnapshot.child("userName").getValue(String.class);
                                         list.add(new RecipeDataList(recipe_id, recipe_name, image, cooking_time, serving, rating, name));
-                                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_searches_ingredient);
+                                        RecyclerView recyclerView = findViewById(R.id.recylerView_searches_ingredient);
                                         HomeListAdapter adapter = new HomeListAdapter( list);
                                         recyclerView.setHasFixedSize(true);
                                         LinearLayoutManager layoutManager = new LinearLayoutManager(SearchIngredientResultActivity.this);
@@ -175,7 +175,7 @@ public class SearchIngredientResultActivity extends AppCompatActivity {
                                         recyclerView.setLayoutManager(layoutManager);
                                         recyclerView.setAdapter(adapter);
 
-                                        emptyView = (TextView) findViewById(R.id.search_by_ingredient_no_result);
+                                        emptyView = findViewById(R.id.search_by_ingredient_no_result);
                                         if (list.isEmpty()) {
                                             recyclerView.setVisibility(View.GONE);
                                             emptyView.setVisibility(View.VISIBLE);

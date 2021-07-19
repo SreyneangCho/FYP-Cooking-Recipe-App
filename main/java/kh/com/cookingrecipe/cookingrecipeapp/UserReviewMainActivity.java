@@ -45,10 +45,9 @@ public class UserReviewMainActivity extends AppCompatActivity {
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                ArrayList<UserReviewDataList> list = new ArrayList();
                long num_review = dataSnapshot.getChildrenCount();
-               TextView review_num = (TextView)findViewById(R.id.number_review);
+               TextView review_num = findViewById(R.id.number_review);
                review_num.setText(String.valueOf(num_review));
                for (DataSnapshot child: dataSnapshot.getChildren()) {
-                   //for(DataSnapshot review_data : child.getChildren()){
                        ReviewDataList review = child.getValue(ReviewDataList.class);
                        assert review != null;
                        String userID = review.getUserID();
@@ -70,7 +69,7 @@ public class UserReviewMainActivity extends AppCompatActivity {
                                public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                                    String name = userSnapshot.child("userName").getValue(String.class);
                                    list.add(new UserReviewDataList(R.drawable.ic_account_circle_black_24dp,name,format, description, rating_int));
-                                   RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_user_review);
+                                   RecyclerView recyclerView = findViewById(R.id.recylerView_user_review);
                                    UserReviewListAdapter adapter = new UserReviewListAdapter(list);
                                    recyclerView.setHasFixedSize(true);
                                    recyclerView.setLayoutManager(new LinearLayoutManager(UserReviewMainActivity.this));
@@ -86,9 +85,6 @@ public class UserReviewMainActivity extends AppCompatActivity {
                        } catch (ParseException e) {
                            e.printStackTrace();
                        }
-
-
-                   //}
                    }
 
 
@@ -108,7 +104,7 @@ public class UserReviewMainActivity extends AppCompatActivity {
                RecipeDataList recipeInfo = dataSnapshot.getValue(RecipeDataList.class);
                assert recipeInfo != null;
                int rating = recipeInfo.getRating();
-               TextView recipe_rating= (TextView)findViewById(R.id.review_rating);
+               TextView recipe_rating= findViewById(R.id.review_rating);
                recipe_rating.setText(String.valueOf(rating));
 
            }
@@ -119,10 +115,10 @@ public class UserReviewMainActivity extends AppCompatActivity {
            }
        });
 
-       ImageView imgReviewBack = (ImageView) findViewById(R.id.user_review_back);
+       ImageView imgReviewBack = findViewById(R.id.user_review_back);
        imgReviewBack.setOnClickListener(v -> finish());
 
-       Button btnAddNewReview = (Button) findViewById(R.id.btn_addnewreview);
+       Button btnAddNewReview = findViewById(R.id.btn_addnewreview);
        btnAddNewReview.setOnClickListener(v -> {
            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
            assert user != null;

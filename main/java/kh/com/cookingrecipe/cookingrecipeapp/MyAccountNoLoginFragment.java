@@ -32,7 +32,7 @@ public class MyAccountNoLoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        final TextView txtLogin = (TextView) view.findViewById(R.id.my_account_login_here);
+        final TextView txtLogin = view.findViewById(R.id.my_account_login_here);
 
         txtLogin.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();

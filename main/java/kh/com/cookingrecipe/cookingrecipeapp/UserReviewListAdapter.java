@@ -50,12 +50,12 @@ public class UserReviewListAdapter extends RecyclerView.Adapter<UserReviewListAd
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.imgView = (ImageView) itemView.findViewById(R.id.review_img);
-            this.nameView = (TextView) itemView.findViewById(R.id.review_name);
-            this.ratingView = (TextView) itemView.findViewById(R.id.review_rating);
-            this.dateView = (TextView) itemView.findViewById(R.id.review_date);
-            this.descriptionView= (TextView) itemView.findViewById(R.id.review_description);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout_user_review);
+            this.imgView = itemView.findViewById(R.id.review_img);
+            this.nameView = itemView.findViewById(R.id.review_name);
+            this.ratingView = itemView.findViewById(R.id.review_rating);
+            this.dateView = itemView.findViewById(R.id.review_date);
+            this.descriptionView= itemView.findViewById(R.id.review_description);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout_user_review);
         }
     }
 }

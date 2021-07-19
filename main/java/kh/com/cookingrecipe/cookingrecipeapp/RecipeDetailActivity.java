@@ -35,7 +35,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         final String recipe_id = intent.getStringExtra("recipeID");
 
-        final ToggleButton simpleToggleButton = (ToggleButton) findViewById(R.id.toggleButton_favorite);
+        final ToggleButton simpleToggleButton = findViewById(R.id.toggleButton_favorite);
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -99,7 +99,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                             String name = userSnapshot.child("userName").getValue(String.class);
-                            TextView recipe_chef = (TextView)findViewById(R.id.recipe_chef);
+                            TextView recipe_chef = findViewById(R.id.recipe_chef);
                             recipe_chef.setText(name);
                             String recipe_name = recipeInfo.getRecipe_name();
                             int cooking_time = recipeInfo.getTime();
@@ -109,14 +109,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
                             Picasso.get().load(image).into(imageView);
                             int rating = recipeInfo.getRating();
 
-                            TextView recipe = (TextView)findViewById(R.id.recipe_name);
+                            TextView recipe = findViewById(R.id.recipe_name);
                             recipe.setText(recipe_name);
 
-                            TextView recipe_time = (TextView)findViewById(R.id.recipe_time);
+                            TextView recipe_time = findViewById(R.id.recipe_time);
                             recipe_time.setText(String.valueOf(cooking_time));
-                            TextView recipe_serving= (TextView)findViewById(R.id.recipe_serving);
+                            TextView recipe_serving= findViewById(R.id.recipe_serving);
                             recipe_serving.setText(String.valueOf(serving));
-                            TextView recipe_rating= (TextView)findViewById(R.id.recipe_rating);
+                            TextView recipe_rating= findViewById(R.id.recipe_rating);
                             recipe_rating.setText(String.valueOf(rating));
                         }
 
@@ -137,8 +137,8 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
         showIngredient(recipe_id);
 
-        final TextView IngredientClick = (TextView) findViewById(R.id.ingredient_ingredient_click);
-        final TextView txtInstruction = (TextView) findViewById(R.id.instruction_click);
+        final TextView IngredientClick = findViewById(R.id.ingredient_ingredient_click);
+        final TextView txtInstruction = findViewById(R.id.instruction_click);
         txtInstruction.setOnClickListener(v -> {
             txtInstruction.setTextColor(Color.parseColor("#8730F7"));
             IngredientClick.setTextColor(Color.parseColor("#000000"));
@@ -155,7 +155,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                         list.add(new RecipeInstructionDataList(recipe_id, i, instruction_name, instruction_detail));
                     }
 
-                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_ingredient);
+                    RecyclerView recyclerView = findViewById(R.id.recylerView_ingredient);
                     RecipeInstructionListAdapter adapter = new RecipeInstructionListAdapter(list);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(RecipeDetailActivity.this));
@@ -168,7 +168,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 }
             });
         });
-        ImageView imgIngredientBack = (ImageView) findViewById(R.id.ingredient_back);
+        ImageView imgIngredientBack = findViewById(R.id.ingredient_back);
         imgIngredientBack.setOnClickListener(v -> finish());
 
         IngredientClick.setOnClickListener(v -> {
@@ -195,7 +195,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
                     list.add(new RecipeIngredientDataList(recipe_id, i, recipe_name, quantity));
                 }
 
-                RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_ingredient);
+                RecyclerView recyclerView = findViewById(R.id.recylerView_ingredient);
                 RecipeIngredientListAdapter adapter = new RecipeIngredientListAdapter(list);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(RecipeDetailActivity.this));
@@ -207,7 +207,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
 
             }
         });
-        ImageView img_review = (ImageView) findViewById(R.id.user_review);
+        ImageView img_review = findViewById(R.id.user_review);
         img_review.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), UserReviewMainActivity.class);
             intent.putExtra("recipeID", recipe_id);

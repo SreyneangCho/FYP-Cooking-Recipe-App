@@ -31,7 +31,7 @@ public class FavoriteNoLoginFragment extends Fragment {
             super.onViewCreated(view, savedInstanceState);
 
 
-            final TextView txtLogin = (TextView) view.findViewById(R.id.favorite_login_here);
+            final TextView txtLogin = view.findViewById(R.id.favorite_login_here);
 
             txtLogin.setOnClickListener(v -> {
                 FirebaseAuth.getInstance().signOut();

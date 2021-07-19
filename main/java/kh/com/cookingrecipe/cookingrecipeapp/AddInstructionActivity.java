@@ -16,7 +16,7 @@ public class AddInstructionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_instruction);
 
-        ImageView imgCancel = (ImageView) findViewById(R.id.cancel_instruction);
+        ImageView imgCancel = findViewById(R.id.cancel_instruction);
         imgCancel.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("Status", "Cancel New Instruction");
@@ -24,9 +24,9 @@ public class AddInstructionActivity extends AppCompatActivity {
             finish();
         });
 
-        final EditText etxt_step =(EditText)findViewById(R.id.etxt_instruction_step);
-        final EditText etxt_detail =(EditText)findViewById(R.id.etxt_instruction_detail);
-        Button button_add =(Button)findViewById(R.id.btn_add_instruction);
+        final EditText etxt_step = findViewById(R.id.etxt_instruction_step);
+        final EditText etxt_detail = findViewById(R.id.etxt_instruction_detail);
+        Button button_add = findViewById(R.id.btn_add_instruction);
         button_add.setOnClickListener(v -> {
             String step = etxt_step.getText().toString();
             String detail = etxt_detail.getText().toString();

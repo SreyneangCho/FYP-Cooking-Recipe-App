@@ -118,14 +118,14 @@ public class FavoriteListAdapter extends RecyclerView.Adapter<FavoriteListAdapte
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.fav_img = (ImageView) itemView.findViewById(R.id.favorite_img);
-            this.fav_name = (TextView) itemView.findViewById(R.id.favorite_name);
-            this.fav_time = (TextView) itemView.findViewById(R.id.favorite_time);
-            this.fav_serving = (TextView) itemView.findViewById(R.id.favorite_serving);
-            this.fav_rating= (TextView) itemView.findViewById(R.id.favorite_rating);
-            this.fav_chef = (TextView) itemView.findViewById(R.id.favorite_chef);
-            this.fav_toggle = (ToggleButton) itemView.findViewById(R.id.toggleButton_favorite1);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout_favorite);
+            this.fav_img = itemView.findViewById(R.id.favorite_img);
+            this.fav_name = itemView.findViewById(R.id.favorite_name);
+            this.fav_time = itemView.findViewById(R.id.favorite_time);
+            this.fav_serving = itemView.findViewById(R.id.favorite_serving);
+            this.fav_rating= itemView.findViewById(R.id.favorite_rating);
+            this.fav_chef = itemView.findViewById(R.id.favorite_chef);
+            this.fav_toggle = itemView.findViewById(R.id.toggleButton_favorite1);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout_favorite);
         }
     }
 }

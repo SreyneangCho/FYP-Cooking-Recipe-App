@@ -41,7 +41,7 @@ public class HomeNoLoginFragment extends Fragment {
         assert user != null;
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Recipe");
-        ref.orderByChild("number_click").limitToLast(4).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.orderByChild("number_click").limitToLast(5).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ArrayList<RecipeDataList> trending_data_list = new ArrayList();
@@ -144,76 +144,5 @@ public class HomeNoLoginFragment extends Fragment {
         });
     }
     }
-    /*@Override
-    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-      /*  DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseReference.child("Recipe");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<RecipeDataList> tredingdatalist = new ArrayList();
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
-                    RecipeDataList recipeInfo = child.getValue(RecipeDataList.class);
-                    int recipe_id = recipeInfo.getRecipeId();
-                    String recipe_name = recipeInfo.getRecipeName();
-                    int cooking_time = recipeInfo.getTime();
-                    int serving = recipeInfo.getServing();
-                    int image = recipeInfo.getImgId();
-                    int rating = recipeInfo.getRating();
-                    String chef = recipeInfo.getChef();
-                    tredingdatalist.add(new RecipeDataList(recipe_id, recipe_name, R.drawable.amok, cooking_time, serving, rating, chef));
-                }
-                Toast.makeText(getContext(), "recipe is "+ String.valueOf(tredingdatalist.size()), Toast.LENGTH_SHORT).show();
-                RecyclerView recyclerView_trending = (RecyclerView) view.findViewById(R.id.recylerView_home_trending);
-                HomeListAdapter adapter_trending = new HomeListAdapter(tredingdatalist);
-                recyclerView_trending.setHasFixedSize(true);
-                recyclerView_trending.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView_trending.setAdapter(adapter_trending);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Handle possible errors.
-            }
-        });
-
-        String url_new = "http://172.20.10.12/cooking_recipe_app/recipe_new.php";
-        StringRequest stringRequest_new = new StringRequest(url_new, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                ArrayList<RecipeDataList> newdatalist = new ArrayList();
-                try{
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray result = jsonObject.getJSONArray("result");
-                    for(int i=0; i<result.length(); i++){
-                        JSONObject jo = result.getJSONObject(i);
-                        int recipeID = jo.getInt("recipe_id");
-                        String recipe = jo.getString("recipe_name");
-                        String chef = jo.getString("user_id");
-                        int time = jo.getInt("cooking_time");
-                        int serving = jo.getInt("number_serving");
-                        int rating= jo.getInt("recipe_rating");
-                        String img = jo.getString("image_path");
-                        newdatalist.add(new RecipeDataList(recipeID, recipe, R.drawable.amok, time, serving, rating, chef));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                RecyclerView recyclerView_new = (RecyclerView) view.findViewById(R.id.recylerView_home_new_recipe);
-                HomeListAdapter adapter_new = new HomeListAdapter(newdatalist);
-                recyclerView_new.setHasFixedSize(true);
-                recyclerView_new.setLayoutManager(new LinearLayoutManager(getActivity()));
-                recyclerView_new.setAdapter(adapter_new);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.getMessage().toString(), Toast.LENGTH_LONG).show();;
-            }
-        });
-        RequestQueue requestQueue_new = Volley.newRequestQueue(getActivity());
-        requestQueue_new.add(stringRequest_new);
-
-    }*/
 

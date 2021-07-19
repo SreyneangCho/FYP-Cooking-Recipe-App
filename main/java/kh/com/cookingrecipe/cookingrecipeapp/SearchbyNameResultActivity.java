@@ -30,7 +30,7 @@ public class SearchbyNameResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_name);
 
-        ImageView imgBack = (ImageView) findViewById(R.id.back_from_search_by_name_result);
+        ImageView imgBack = findViewById(R.id.back_from_search_by_name_result);
         imgBack.setOnClickListener(v -> finish());
 
         Intent intent = getIntent();
@@ -62,7 +62,7 @@ public class SearchbyNameResultActivity extends AppCompatActivity {
                                     String name = userSnapshot.child("userName").getValue(String.class);
                                     list.add(new RecipeDataList(recipe_id, recipe_name, image, cooking_time, serving, rating, name));
                                     HomeListAdapter adapter = new HomeListAdapter(list);
-                                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_searches_name);
+                                    RecyclerView recyclerView = findViewById(R.id.recylerView_searches_name);
                                     recyclerView.setHasFixedSize(true);
                                     LinearLayoutManager layoutManager = new LinearLayoutManager(SearchbyNameResultActivity.this);
                                     layoutManager.setReverseLayout(true);
@@ -70,7 +70,7 @@ public class SearchbyNameResultActivity extends AppCompatActivity {
                                     recyclerView.setLayoutManager(layoutManager);
                                     recyclerView.setAdapter(adapter);
                                     if(list.isEmpty()){
-                                        TextView emptyView = (TextView) findViewById(R.id.search_by_ingredient_no_result);
+                                        TextView emptyView = findViewById(R.id.search_by_ingredient_no_result);
                                         recyclerView.setVisibility(View.GONE);
                                         emptyView.setVisibility(View.VISIBLE);
                                         Toast.makeText(SearchbyNameResultActivity.this, "No Result", Toast.LENGTH_LONG).show();
@@ -100,10 +100,9 @@ public class SearchbyNameResultActivity extends AppCompatActivity {
             });
 
         }
-        //RecyclerView recyclerView1 = (RecyclerView) findViewById(R.id.recylerView_searches_name);
 
 
-       final SearchView searchView = (SearchView) findViewById(R.id.search_by_name_result);
+       final SearchView searchView = findViewById(R.id.search_by_name_result);
         searchView.setActivated(true);
         searchView.onActionViewExpanded();
         searchView.setIconified(false);

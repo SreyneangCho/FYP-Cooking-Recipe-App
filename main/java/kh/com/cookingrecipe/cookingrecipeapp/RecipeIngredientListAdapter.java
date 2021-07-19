@@ -46,10 +46,10 @@ public class RecipeIngredientListAdapter extends RecyclerView.Adapter<RecipeIngr
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.numberView = (TextView) itemView.findViewById(R.id.ingredient_step);
-            this.ingredientView = (TextView) itemView.findViewById(R.id.ingredient_name);
-            this.quantityView = (TextView) itemView.findViewById(R.id.ingredient_quantity);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout_ingredient);
+            this.numberView = itemView.findViewById(R.id.ingredient_step);
+            this.ingredientView = itemView.findViewById(R.id.ingredient_name);
+            this.quantityView = itemView.findViewById(R.id.ingredient_quantity);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout_ingredient);
         }
     }
 }

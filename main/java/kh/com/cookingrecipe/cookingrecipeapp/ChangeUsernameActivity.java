@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ChangeUsernameActivity extends AppCompatActivity {
 
     @Override
@@ -52,11 +54,37 @@ public class ChangeUsernameActivity extends AppCompatActivity {
         btnChangeUsername.setOnClickListener(v -> {
             final String new_username = name.getText().toString();
             if(!new_username.equals("")){
-                DatabaseReference mRef1 =  databaseReference.child("UserInfo/"+userId);
-                mRef1.child("userName").setValue(new_username);
-                Intent intent = new Intent();
-                setResult(1,intent);
-                finish();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference mRef = database.getReference().child("UserInfo");
+                mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot userSnapshot) {
+                        ArrayList<String> username_list = new ArrayList<>();
+                        String username_lowercase = new_username.toLowerCase();
+                        for(DataSnapshot child : userSnapshot.getChildren()){
+                            String username = child.child("userName").getValue(String.class);
+                            username_list.add(username);
+                        }
+                        if(username_list.contains(username_lowercase)){
+                            Toast.makeText(ChangeUsernameActivity.this, "This username already exists.",
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            DatabaseReference mRef1 =  databaseReference.child("UserInfo/"+userId);
+                            mRef1.child("userName").setValue(new_username);
+                            Intent intent = new Intent();
+                            setResult(1,intent);
+                            finish();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        throw databaseError.toException();
+                    }
+
+                });
+
             }else {
                 Toast.makeText(ChangeUsernameActivity.this, "Input You Username", Toast.LENGTH_LONG).show();
             }

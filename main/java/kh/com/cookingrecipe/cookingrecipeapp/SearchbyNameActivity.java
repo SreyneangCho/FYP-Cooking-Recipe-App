@@ -29,13 +29,13 @@ public class SearchbyNameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_by_name_main);
 
-        LinearLayout app_layer = (LinearLayout) findViewById (R.id.toSearchIngredient);
+        LinearLayout app_layer = findViewById (R.id.toSearchIngredient);
         app_layer.setOnClickListener(v -> {
             Intent intent = new Intent(SearchbyNameActivity.this, SearchbyIngredient.class);
             startActivity(intent);
         });
 
-        ImageView imgBack = (ImageView) findViewById(R.id.back_from_search_to_home);
+        ImageView imgBack = findViewById(R.id.back_from_search_to_home);
         imgBack.setOnClickListener(v -> finish());
 
         FirebaseUser user =  FirebaseAuth.getInstance().getCurrentUser();
@@ -56,7 +56,7 @@ public class SearchbyNameActivity extends AppCompatActivity {
                         String data = list.get(n).getQuery();
                         new_list.add(new RecentSearchDataList(data));
                     }
-                    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recylerView_searches_name_history);
+                    RecyclerView recyclerView = findViewById(R.id.recylerView_searches_name_history);
                     RecentSearchListAdapter adapter = new RecentSearchListAdapter(new_list);
                     recyclerView.setHasFixedSize(true);
                     recyclerView.setLayoutManager(new LinearLayoutManager(SearchbyNameActivity.this));
@@ -70,7 +70,7 @@ public class SearchbyNameActivity extends AppCompatActivity {
             });
 
 
-        SearchView searchView = (SearchView) findViewById(R.id.search_by_name);
+        SearchView searchView = findViewById(R.id.search_by_name);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override

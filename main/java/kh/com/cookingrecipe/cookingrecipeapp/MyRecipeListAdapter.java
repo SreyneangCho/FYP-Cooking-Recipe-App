@@ -127,18 +127,16 @@ public class MyRecipeListAdapter extends RecyclerView.Adapter<MyRecipeListAdapte
         public TextView servingView;
         public TextView ratingView;
         public ImageView imgDelete;
-        //public ImageView imgEdit;
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.imgView = (ImageView) itemView.findViewById(R.id.my_recipe_img);
-            this.nameView = (TextView) itemView.findViewById(R.id.my_recipe_name);
-            this.timeView = (TextView) itemView.findViewById(R.id.my_recipe_time);
-            this.servingView = (TextView) itemView.findViewById(R.id.my_recipe_serving);
-            this.ratingView = (TextView) itemView.findViewById(R.id.my_recipe_rating);
-            this.imgDelete = (ImageView) itemView.findViewById(R.id.my_recipe_delete);
-            //this.imgEdit = (ImageView) itemView.findViewById(R.id.my_recipe_edit);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.relativeLayout);
+            this.imgView = itemView.findViewById(R.id.my_recipe_img);
+            this.nameView = itemView.findViewById(R.id.my_recipe_name);
+            this.timeView = itemView.findViewById(R.id.my_recipe_time);
+            this.servingView = itemView.findViewById(R.id.my_recipe_serving);
+            this.ratingView = itemView.findViewById(R.id.my_recipe_rating);
+            this.imgDelete = itemView.findViewById(R.id.my_recipe_delete);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout);
 
         }
 

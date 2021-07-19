@@ -13,11 +13,11 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        TextView txtCancel = (TextView) findViewById(R.id.cancel_edit_profile);
+        TextView txtCancel = findViewById(R.id.cancel_edit_profile);
         txtCancel.setOnClickListener(v -> finish());
 
-        final TextView txtChangeUsername = (TextView) findViewById(R.id.my_account_change_username);
-        final TextView txtChangePassword = (TextView) findViewById(R.id.my_account_change_password);
+        final TextView txtChangeUsername = findViewById(R.id.my_account_change_username);
+        final TextView txtChangePassword = findViewById(R.id.my_account_change_password);
 
         txtChangeUsername.setOnClickListener(v -> {
             Intent myIntent = new Intent(EditProfileActivity.this, ChangeUsernameActivity.class);

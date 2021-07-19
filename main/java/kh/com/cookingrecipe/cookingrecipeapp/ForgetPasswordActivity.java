@@ -19,9 +19,9 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
 
-        edtEmail = (EditText) findViewById(R.id.etxt_email_forget_password);
-        Button btnResetPassword = (Button) findViewById(R.id.btn_forget_password_send_email);
-        Button btnBack = (Button) findViewById(R.id.btn_forget_password_cancel);
+        edtEmail = findViewById(R.id.etxt_email_forget_password);
+        Button btnResetPassword = findViewById(R.id.btn_forget_password_send_email);
+        Button btnBack = findViewById(R.id.btn_forget_password_cancel);
 
         mAuth = FirebaseAuth.getInstance();
 

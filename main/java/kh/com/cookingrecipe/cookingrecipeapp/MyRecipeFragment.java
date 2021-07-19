@@ -73,7 +73,7 @@ public class MyRecipeFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot userSnapshot) {
                                 String name = userSnapshot.child("userName").getValue(String.class);
                                 list.add(new RecipeDataList(recipe_id, recipe_name, image, cooking_time, serving, rating, name));
-                                RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recylerView);
+                                RecyclerView recyclerView = view.findViewById(R.id.recylerView);
                                 MyRecipeListAdapter adapter = new MyRecipeListAdapter(list);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -99,7 +99,7 @@ public class MyRecipeFragment extends Fragment {
         });
 
 
-        TextView txtAddRecipe = (TextView) view.findViewById(R.id.new_recipe);
+        TextView txtAddRecipe = view.findViewById(R.id.new_recipe);
         txtAddRecipe.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), AddRecipeActivity.class);
             startActivity(intent);

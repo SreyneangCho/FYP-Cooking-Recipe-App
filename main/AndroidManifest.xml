@@ -14,20 +14,30 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InstructionEditActivity" />
-        <activity android:name=".IngredientEditActivity" />
+        <activity android:name=".InstructionEditActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".IngredientEditActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ForgetPasswordEmailSentActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".ForgetPasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".MyRecipeStudentFragment"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable"
+            />
         <activity
             android:name=".MyRecipeInstructionListAdapter"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable"
+            />
         <activity
             android:name=".MyRecipeIngredientListAdapter"
             tools:ignore="Instantiatable" />
@@ -36,19 +46,28 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".SearchbyNameResultActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SearchIngredientResultActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SearchbyNameActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".SearchbyIngredient"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".HomeNoLoginFragment"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable"
+            />
         <activity
             android:name=".MyAccountNoLoginFragment"
             tools:ignore="Instantiatable" />
@@ -60,18 +79,15 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".EditProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".AddIngredientActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".RecipeDetailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".IngredientFragment"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />

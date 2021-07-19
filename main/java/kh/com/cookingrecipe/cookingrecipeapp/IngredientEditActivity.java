@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,13 +21,13 @@ public class IngredientEditActivity extends AppCompatActivity {
         String quantity = getIntent.getStringExtra("quantity");
         String position = getIntent.getStringExtra("position");
 
-        final EditText etxt_name =(EditText)findViewById(R.id.edit_ingredient_name);
-        final EditText etxt_quantity =(EditText)findViewById(R.id.edit_ingredient_quantity);
+        final EditText etxt_name = findViewById(R.id.edit_ingredient_name);
+        final EditText etxt_quantity = findViewById(R.id.edit_ingredient_quantity);
 
         etxt_name.setText(ingredient);
         etxt_quantity.setText(quantity);
 
-        Button button_add =(Button)findViewById(R.id.btn_edit_ingredient);
+        Button button_add = findViewById(R.id.btn_edit_ingredient);
         button_add.setOnClickListener(v -> {
             String name = etxt_name.getText().toString();
             String quantity1 = etxt_quantity.getText().toString();
@@ -48,7 +47,7 @@ public class IngredientEditActivity extends AppCompatActivity {
             }
         });
 
-        ImageView imgCancel = (ImageView) findViewById(R.id.cancel_ingredient);
+        ImageView imgCancel = findViewById(R.id.cancel_ingredient);
         imgCancel.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.putExtra("Status", "Cancel Edit Ingredient");

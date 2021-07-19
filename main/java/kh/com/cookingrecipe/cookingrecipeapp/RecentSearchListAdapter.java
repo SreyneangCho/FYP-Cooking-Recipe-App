@@ -96,9 +96,9 @@ public class RecentSearchListAdapter extends RecyclerView.Adapter<RecentSearchLi
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.imgDelete = (ImageView) itemView.findViewById(R.id.recent_search_delete);
-            this.query = (TextView) itemView.findViewById(R.id.recent_search);
-            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout_recent_searches);
+            this.imgDelete = itemView.findViewById(R.id.recent_search_delete);
+            this.query = itemView.findViewById(R.id.recent_search);
+            relativeLayout = itemView.findViewById(R.id.relativeLayout_recent_searches);
 
         }
 

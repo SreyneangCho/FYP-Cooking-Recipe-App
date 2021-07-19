@@ -31,7 +31,7 @@ public class MyRecipeNoLoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        final TextView txtLogin = (TextView) view.findViewById(R.id.my_recipe_login_here);
+        final TextView txtLogin = view.findViewById(R.id.my_recipe_login_here);
 
         txtLogin.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
